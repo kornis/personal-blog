@@ -29,7 +29,7 @@
       	<span class="badge badge-primary">{{ $user->type }}</span>
       	@endif
       </td>
-      <td><a href="" class="btn btn-warning" aria-hidden="true"><i class="fas fa-edit"></i></a><a href="{{ route('admin.users.destroy',$user->id) }}" class="btn btn-danger" aria-hidden="true" onclick="return confirm('¿Seguro que deseas eliminarlo?')"><i class="fas fa-times-circle"></i></a></td>
+      <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning" aria-hidden="true"><i class="fas fa-edit"></i></a><a href="{{ route('admin.users.destroy',$user->id) }}" class="btn btn-danger" aria-hidden="true" onclick="return confirm('¿Seguro que deseas eliminarlo?')"><i class="fas fa-times-circle"></i></a></td>
     </tr>
     @endforeach
   </tbody>
