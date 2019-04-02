@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>@yield('title', 'Default') | Panel de Administracion</title>
 	<link rel="stylesheet" href=" {{ asset('plugins/bootstrap/css/bootstrap.css') }} ">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	
 </head>
 <body style="width: 80%; margin:0 auto">
@@ -13,7 +14,18 @@
 			<div class="card-header">
 				@yield('section-name')
 			</div>
+	
+			
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Usuario eliminado con éxito</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+			
 			<div class="card-body">
+			
 		@yield('content')
 	</div>
 	</div>

@@ -13,20 +13,27 @@ class UsersController extends Controller
 	}
    public function create()
    {
-   	$types="hola";
    	return view('admin.users.create');
    }
 
    public function store(Request $request)
    {
+   	$type = $request->type;
+
    	$user = new User($request->all());
-   	dd($user);
-   	/*$user->password = bcrypt($request->password);
+   	
+   	$user->password = bcrypt($request->password);
+   	$user->type = $type;
    	$user->save();
-   	return redirect()->route('users.index');*/
+   	$success='added';
+   	
+   	return redirect()->route('users.index');
    }
 
-   public function delete(Request $request){
-
+   public function destroy($id){
+   		$user = User::find($id);
+   		$user->delete();
+   		$success="destroy";
+   		return redirect()->route('users.index');
    }
 }

@@ -30,13 +30,11 @@
 			<label for="type">Tipo</label>
 				<select type="text" name="type" class="form-control">
 					
-					
-					
-				<option value="0"></option>
+				<option value="0">Seleccione...</option>
 				<option value="admin">Administrador</option>
 				<option value="member">Miembro</option>
 				</select>
-		</div>		
+		</div>	
 		<button type="submit" class="btn btn-primary">Enviar</button>
 	</form>
 </div>

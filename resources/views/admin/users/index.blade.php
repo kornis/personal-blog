@@ -11,6 +11,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
       <th scope="col">Tipo</th>
       <th scope="col">Acción</th>
     </tr>
@@ -20,6 +21,7 @@
     <tr>
       <td>{{ $user->id }}</th>
       <td>{{ $user->name }}</td>
+      <td>{{ $user->email }}</td>
       <td>
       	@if($user->type == "admin")
       	<span class="badge badge-danger">{{ $user->type }}</span>
@@ -27,7 +29,7 @@
       	<span class="badge badge-primary">{{ $user->type }}</span>
       	@endif
       </td>
-      <td><a href="" class="btn btn-danger"></a><a href="" class="btn btn-warning"></a></td>
+      <td><a href="" class="btn btn-warning" aria-hidden="true"><i class="fas fa-edit"></i></a><a href="{{ route('admin.users.destroy',$user->id) }}" class="btn btn-danger" aria-hidden="true" onclick="return confirm('¿Seguro que deseas eliminarlo?')"><i class="fas fa-times-circle"></i></a></td>
     </tr>
     @endforeach
   </tbody>
