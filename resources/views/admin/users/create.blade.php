@@ -6,8 +6,10 @@
 	@section('section-name')
 	Crear usuario
 	@endsection
-	<div class="card-body">
+	
+	@include('admin.template.partials.errors-crud')
 
+<div class="card-body">
 	<form method="POST" action="{{ action('UsersController@store') }}">
 		{{ csrf_field() }}
 		
@@ -35,7 +37,7 @@
 				<option value="member">Miembro</option>
 				</select>
 		</div>	
-		<button type="submit" class="btn btn-primary">Enviar</button>
+		<button type="submit" class="btn btn-primary">Crear</button>
 	</form>
 </div>
 </div>

@@ -6,6 +6,7 @@
 	@section('section-name')
 	<label>Editar Usuario: {{ $user->name }}</label>
 	@endsection
+	
 	<div class="card-body">
 
 	<form method="POST" action="{{ action('UsersController@update', $user) }}">
