@@ -8,7 +8,6 @@ Lista de Categorías
 
 @section('content')
 <a class="btn btn-success" href=" {{ route('categories.create') }}">Crear nueva Categoría</a>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -21,7 +20,7 @@ Lista de Categorías
     <tr>
       <td>{{ $category->name }}</td>
       <td>
-      	<a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning" aria-hidden="true"><i class="fas fa-edit"></i></a><a href="{{ action('CategoriesController@destroy',$category->id) }}" class="btn btn-danger" aria-hidden="true" onclick="return confirm('¿Seguro que deseas eliminarlo?')"><i class="fas fa-times-circle"></i></a>
+      	<a href="{{ action('CategoriesController@edit', $category) }}" class="btn btn-warning" aria-hidden="true"><i class="fas fa-edit"></i></a><a href="{{ action('CategoriesController@destroy',$category) }}" class="btn btn-danger" aria-hidden="true" onclick="return confirm('¿Seguro que deseas eliminarlo?')"><i class="fas fa-times-circle"></i></a>
       </td>
     </tr>
 	@endforeach
