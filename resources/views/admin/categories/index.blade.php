@@ -8,6 +8,7 @@ Lista de Categorías
 
 @section('content')
 <a class="btn btn-success" href=" {{ route('categories.create') }}">Crear nueva Categoría</a>
+<hr>
 <table class="table table-striped">
   <thead>
     <tr>

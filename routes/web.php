@@ -39,6 +39,14 @@ Route::group(['prefix' => 'admin'], function(){
 		])->middleware('auth');
 	});
 
+		
+		Route::resource('articles','ArticlesController',['only'=>['index','update','store','edit','destroy','create']])->middleware('auth');
+
+		Route::get('articles/{id}/destroy',[
+			'uses' => 'ArticlesController@destroy',
+			'as' => 'admin.articles.destroy'
+		])->middleware('auth');
+		
 		Route::post('auth/login',[
 			'uses' => 'Auth\LoginController@authenticate',
 			 'as' => 'auth.login']);

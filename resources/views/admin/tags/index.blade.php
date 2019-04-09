@@ -7,7 +7,22 @@
 @section('section-name')
 Lista de tags
 @endsection
-	<a href="{{ action('TagsController@create') }}" class="btn btn-primary">Crear Tag</a>
+<div class="row">
+	<div class="col">
+		<span><a href="{{ action('TagsController@create') }}" class="btn btn-primary">Crear Tag</a></span>
+	</div>
+	<div class="col">
+		<form method="get" class="form-inline float-right" action="{{action('TagsController@index') }}">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Buscar" name ="name" aria-label="tags" aria-describedby="tags-search">
+		  			<div class="input-group-prepend">
+		    			<span class="input-group-text" id="tags-search"><i class="fas fa-search"></i></span>
+		  			</div>
+			</div>
+		</form>	
+	</div>
+</div>	
+
 	<table class="table table-striped">
 		<thead>
 			<tr>
