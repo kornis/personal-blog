@@ -10,11 +10,17 @@ use App\Image;
 
 
 
+
 class ArticlesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    	return view('articles.index');
+        $articles = Article::Search($request->title)->paginate(5);
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->user;
+        });
+    	return view('articles.index')->with('articles',$articles);
     }
 
     public function create()
@@ -56,4 +62,19 @@ class ArticlesController extends Controller
                   </div>';
     	return redirect()->route('articles.index')->with('success',$success);
     }
+
+    public function edit($id)
+    {
+        $articles = Article::find($id);
+        $articles->category;
+        $categories = Category::orderBy('name','DESC')->get();
+        $tags = Tag::orderBy('name','DESC')->get();     
+        return view('articles.edit')->with('articles',$articles)->with('categories',$categories)->with('tags',$tags);
+    }
+
+    public function update(Request $request)
+    {
+
+    }
+
 }
