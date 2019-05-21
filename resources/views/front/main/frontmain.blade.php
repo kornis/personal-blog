@@ -11,14 +11,34 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 	
 </head>
-<body style="width: 80%; margin:0 auto">
-	@include('admin.template.partials.nav')
+
+<body class="col-md-12">
+		@include('front.main.partials.frontnav')
+			<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<H1 class="display-4">BLOG PESONAL</H1>
+		<p class="lead">Un blog personal de prueba</p>
+	</div>
+	</div>
 	<section>
-		<div class="card">
-			<div class="card-header">
+	<div class="row">
+		<div class="cont-body col-md-2">
+		</div>
+
+		<div class="cont-body col-md-7">
+					
+						<div class="row">
+			<div class="card-title">
+				<h3>
 				@yield('section-name')
+			</h3>
 			</div>
-	
+		</div>
+				
+				<div class="row">
+					@yield('article-img')
+				</div>	
+				<div class="row">
 			@if(session('success'))
 				{!! session('success') !!}
 			@endif
@@ -27,9 +47,13 @@
 		@yield('content')
 	</div>
 	</div>
+</div>
 		
+		@yield('aside')
 		@yield('content-tags')
-	</section>
+	</div>
+</section>
+
 	
 <script type="text/javascript" src="{{ asset('plugins/jquery/jquery-3.3.1.js') }}"></script>
 <script type="text/javascript" src="{{ asset('plugins/bootstrap/js/bootstrap.js') }}"></script>

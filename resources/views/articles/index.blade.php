@@ -9,7 +9,7 @@ Artículos
 @endsection
 <div class="row">
 	<div class="col">
-<span href=" {{ route('articles.create') }}" class="btn btn-info">Registrar nuevo artículo</span>
+<span><a href=" {{action('ArticlesController@create')}}" class="btn btn-info">Registrar nuevo artículo</a></span>
 	</div>
 	<div class="col">
 		<form method="get" class="form-inline float-right" action="{{action('ArticlesController@index') }}">

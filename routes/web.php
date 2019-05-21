@@ -11,41 +11,64 @@
 |
 */
 
-Route::get('/', function() {
-    return view('welcome');
-})->name('/');
+Route::get('/', [
+	'as' => 'index',
+	'uses' => 'FrontController@index'
+]);
 
+Route::get('front/article/{id}',[
+	'uses' => 'ArticlesController@article',
+	'as' => 'front.article'
+]);
 
-Route::group(['prefix' => 'admin'], function(){
+Route::get('front/article-by-category/{category}',[
+	'uses' => 'ArticlesController@articlesCategory',
+	'as' => 'front.articlesbycategories'
+]);
 
-	Route::resource('users','UsersController',['only'=>['index','update','store','edit','destroy','create']])->middleware('auth');
-	Route::get('users/{id}/destroy',[
-		'uses' => 'UsersController@destroy',
-		'as' => 'admin.users.destroy'
-	])->middleware('auth');
+//GRUPO DE RUTAS ADMINISTRADOR
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
-	Route::resource('categories', 'CategoriesController',['only'=>['index','update','store','edit','destroy','create']])->middleware('auth');
+	//RUTAS QUE SOLO ACCEDE EL ADMINISTRADOR. INCLUYE ADMINISTRAR USUARIOS Y TODOS LOS DESTROY 
+	Route::group(["middleware" => ['admin']], function(){
 
-		Route::get('categories/{id}/destroy',[
-			'uses' => 'CategoriesController@destroy',
-			'as' => 'admin.categories.destroy'
-		])->middleware('auth');
+			Route::resource('users','UsersController',['only'=>['index','update','store','edit','destroy','create']]);
 
-		Route::resource('tags', 'TagsController',['only'=>['index','update','store','edit','destroy','create']])->middleware('auth');
+			Route::get('users/{id}/destroy',[
+				'uses' => 'UsersController@destroy',
+				'as' => 'admin.users.destroy'
+			]);
 
-		Route::get('tags/{id}/destroy',[
-			'uses' => 'TagsController@destroy',
-			'as' => 'admin.tags.destroy'
-		])->middleware('auth');
+			Route::get('categories/{id}/destroy',[
+				'uses' => 'CategoriesController@destroy',
+				'as' => 'admin.categories.destroy'
+			]);
+
+			Route::get('tags/{id}/destroy',[
+				'uses' => 'TagsController@destroy',
+				'as' => 'admin.tags.destroy'
+			]);
+
+			Route::get('articles/{id}/destroy',[
+				'uses' => 'ArticlesController@destroy',
+				'as' => 'admin.articles.destroy'
+			]);
 	});
 
-		
-		Route::resource('articles','ArticlesController',['only'=>['index','update','store','edit','destroy','create']])->middleware('auth');
 
-		Route::get('articles/{id}/destroy',[
-			'uses' => 'ArticlesController@destroy',
-			'as' => 'admin.articles.destroy'
-		])->middleware('auth');
+		Route::resource('categories', 'CategoriesController',['only'=>['index','update','store','edit','destroy','create']]);
+
+		Route::resource('tags', 'TagsController',['only'=>['index','update','store','edit','create']]);
+
+
+		Route::resource('articles','ArticlesController',['only'=>['index','update','store','edit','destroy','create']]);
+
+
+		Route::resource('images','ImagesController',['only'=>['index']]);
+
+	});
+
+
 		
 		Route::post('auth/login',[
 			'uses' => 'Auth\LoginController@authenticate',
@@ -55,8 +78,12 @@ Route::group(['prefix' => 'admin'], function(){
 			'uses' => 'LogoutController@logout',
 			'as' => 'auth.logout']);
 
-		Route::get('/home',[
+		Route::get('/login',[
 			'uses' => 'Auth\LoginController@loginview',
-			'as' => '/home'
+			'as' => '/login'
 		]);
+
+
+
+
 

@@ -30,4 +30,8 @@ class Article extends Model
     {
         return $query->where('title','LIKE','%'.$title.'%');
     }
+    public function scopeCategorySearch($query,$category)
+    {
+        return $query->where('category_id','LIKE','%'.$category.'%');
+    }
 }

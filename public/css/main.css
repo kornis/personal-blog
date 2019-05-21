@@ -1,0 +1,59 @@
+
+*
+{
+	font-family: 'Roboto', sans-serif;
+}
+
+bodyyy {
+	background-image: url('../images/background-1.jpg');
+}
+
+.jumbotron
+{
+	background-color: rgba(0,0,0,0) !important;
+	
+	width: 100% !important;
+	text-align: 	center;
+
+}
+.cont-menu
+{
+	width: 80%;
+    margin: 0, auto;
+}
+h1
+{
+	font-size: 48px !important;
+}
+
+.cont-body
+{
+	height: 100%;
+	
+	
+}
+
+.fila
+{
+	padding-left: 30px !important;
+}
+
+.card
+{
+	margin-top: 16px;
+	margin: 15px;
+}
+.search-box
+{
+	background-color: rgba(0,0,0,0) !important;
+}
+.boxed
+{
+	float: right;
+	display: inline-block;
+}
+
+i
+{
+margin-right: 4px;
+}

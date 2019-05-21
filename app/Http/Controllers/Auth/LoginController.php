@@ -44,12 +44,12 @@ public function authenticate(Request $request)
     
     if(Auth::attempt($credentials)){
 
-        return redirect()->intended('admin/users');
+        return redirect()->intended('/');
 
     }
     else
     {
-        return view('home');
+        return view('login');
     }
 }
 
@@ -60,7 +60,7 @@ protected function guard()
 
 public function loginview()
 {
-    return view('home');
+    return view('login');
 }
 
 }
